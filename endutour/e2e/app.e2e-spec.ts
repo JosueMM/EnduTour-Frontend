@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('endutour App', () => {
+describe('entopedia-frontend App', () => {
   let page: AppPage;
 
   beforeEach(() => {
