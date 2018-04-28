@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/home.service';
-import { Image } from '../../../image';
-import { IMAGES } from '../../../mock-images';
+
+
 
 @Component({
   selector: 'app-home',
@@ -10,18 +10,15 @@ import { IMAGES } from '../../../mock-images';
 })
 export class HomeComponent implements OnInit {
 
-  images: Image[];
+
 
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
-   this.getImages();
+ 
   }
 
-  getImages(): void {
-    this.homeService.getImages()
-      .subscribe(images => this.images = images);
-  }
+
 
 
 

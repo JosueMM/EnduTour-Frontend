@@ -1,5 +1,6 @@
-<app-menu></app-menu>
+
 <div class="parallax text-white text-center">
+    <app-menu></app-menu>
   <div class="container">
       <br>
       <br>
@@ -7,8 +8,9 @@
       <h1 class="display-1 col-md-12 col-sm-12">Buscar</h1>
       <p class="lead">Podras buscar todas las Rutas que necesites</p>
       <p>Buscar ubicacion</p>  
-      <div class="input-group lrcInputs"><input class="form-control search" id="search-text" name="lookfor" placeholder="Buscar" type="text" />
-      <div class="input-group-btn"><button class="btn btn-success lrcSearchButton" type="submit"><i class="glyphicon glyphicon-search"></i>Go</button></div>
+      <div class="input-group lrcInputs"><input class="form-control search" id="search-text" [(ngModel)]="buscar" name="lookfor" placeholder="Buscar" type="text" />
+      <div class="input-group-btn"><button class="btn btn-success lrcSearchButton" type="submit" (click)="burcar()"><i class="glyphicon glyphicon-search"></i>Go</button></div>
+      <div class="input-group-btn"><button class="btn btn-primary lrcSearchButton" type="submit" (click)="getRuts()"><i class="glyphicon glyphicon-search"></i>All</button></div>
       
   </div>
 </div>
@@ -17,29 +19,33 @@
 
   <table class="table table-striped custab">
   <thead>
-  <h2>Resultados</h2>
+  <h2>Resultados</h2><p>{{mensaje}}</p>
   <table class="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Ruta</th>
-        <th scope="col">Fecha</th>
+        <th scope="col">Inicia</th>
+        <th scope="col">Termina</th>
         <th scope="col">Hora</th>
-        <th scope="col"></th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Usuarios</th>
+        <th ><button type="button" class="btn btn-success"(click)="open(content)">Agregar Ruta</button></th>
   
    
   
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let inse of insectos">
-        <th scope="row">{{inse["num"]}}</th>
-        <td>{{inse["nombreCien"]}}</td>
-        <td>{{inse["nombreCom"]}}</td>
-        <td>{{inse["Orden"]}}</td>
-        
+      <tr *ngFor="let ruta of ruts">
+        <th scope="row" >{{ruta["id"]}}</th>
+        <td>{{ruta["start"]}}</td>
+        <td>{{ruta["end"]}}</td>
+        <td>{{ruta["time"]}}</td>
+        <td>{{ruta["date"]}}</td>
+        <td>{{ruta["intefull"]}}/{{ruta["inte"]}}</td>
+       
         <td>
-          <button type="button" class="btn btn-primary"(click)="open(content)">Unirme</button>
+          <button type="button" class="btn btn-primary" (click)="addme(ruta['id'])">Unirme</button>
         </td>
   
       </tr>
@@ -47,27 +53,53 @@
     </tbody>
   </table>
   
+  <ng-template #unirme let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Unirme!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p>
+          
+     
+          
+      </p>
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" >Ok</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+      </div>
+    </ng-template>
   
+
   <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title">Informacion</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-    <p>
-      Esto esta quemado hay que pasar el seleccionado
-        num: 1
-        nombreCien: Morpho
-        nombreCom: Mariposa
-        Orden:  Lepidoptera
-        familia:Nymphalidae
-        filo:Arthropoda
-    </p>
-     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="downloadPDF()">Descagar como PDF</button>
-      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-    </div>
-  </ng-template>
+      <div class="modal-header">
+        <h4 class="modal-title">Nueva Ruta!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <p>
+          <input class="form-control form-control-lg" name="username" [(ngModel)]="current_rut.start" type="text" placeholder="Inicio de Ruta">
+          <br>
+          <input class="form-control form-control-lg" name="email" [(ngModel)]="current_rut.end" type="text" placeholder="Final de Ruta">
+          <br>
+          <input class="form-control form-control-lg" name="name" [(ngModel)]="current_rut.time" type="text" placeholder="Hora">
+          <br>
+          <input class="form-control form-control-lg" name="phone" [(ngModel)]="current_rut.date" type="text" placeholder="Fecha (11/06/2018)">
+          <br>
+          <input class="form-control form-control-lg" name="phone" [(ngModel)]="current_rut.inte" type="text" placeholder="Numero Maximo de Integrantes">
+
+      
+     
+          
+      </p>
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="addRuts()">Ok</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+      </div>
+    </ng-template>

@@ -1,3 +1,35 @@
 <div class="index">
-<app-menu></app-menu>
+  <app-menu></app-menu>
+  <h1 class="text-center" style="margin-top:15px; font-family: 'Lucida Console', Courier, monospace; color:white">Puntos: {{points}}</h1>
+  <h1 class="text-center" style="margin-top:15px; font-family: 'Lucida Console', Courier, monospace; color:white">Bienvenido {{log}}!</h1>
+
+  <div class="card">
+    <h5 class="card-header">Mis Rutas</h5>
+    <div class="card-body">
+      <table class="table table-sm ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Final</th>
+            <th scope="col">Fecha</th>
+            <th scope="col"><button type="button" class="btn btn-primary">Premios</button></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ruta of ruts">
+            <th scope="row">{{ruta["id"]}}</th>
+            <td>{{ruta["start"]}}</td>
+            <td>{{ruta["end"]}}</td>
+            <td>{{ruta["date"]}}</td>
+            <td>
+              <button *ngIf= "ruta['status']" type="button" class="btn btn-success" (click)="editRut(ruta['id'])">Ruta Terminada</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>

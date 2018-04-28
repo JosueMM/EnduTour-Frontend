@@ -35,3 +35,9 @@ label{
     border-color: rgba(128,128,128,.25);
     box-shadow: 0 0 0 0.1rem rgba(128,128,128,.25);
 }
+.hidden {
+    display: none;
+}
+.red{
+    color: red;
+}
