@@ -1,0 +1,114 @@
+.parallax {
+    /* The image used */
+    background-image: url("https://allwallpapers.info/wp-content/uploads/2016/05/37684-kawasaki-dirt-bike-1920x1080-motorcycle-wallpaper.jpeg");
+ 
+    /* Set a specific height */
+    min-height: 700px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#container-text{
+    height: 275px;
+    font-size: 20px;
+}
+
+#letterTitle{
+    font-size: 25px;
+}
+
+#text-margin{
+    margin-top: 40px;
+}
+
+.project {
+    margin-bottom: 30px;
+    vertical-align: top;
+    margin-right: 30px;
+    float: left;
+    cursor: pointer;
+    width:100%;
+}
+
+.project figure {
+    position: relative;
+    display: inline-block;
+}
+
+.project figure img {
+    width: 100%;
+}
+
+.project figure:hover figcaption {
+    background:#d81e05;
+}
+.project figure:hover figcaption .project-details {
+    color: #fff;
+}
+
+.project figure:hover .actions {
+    background-color: rgba(216,30,5,.8);
+    top: 0%;
+    font-size:2.3em;
+    font-weight:700;
+    padding-top:10%;
+}
+
+.project figure .actions {
+    display: table-cell;
+    position: absolute;
+    bottom: 0px;
+    top: 50%;
+    left:0;
+    right:0;
+    z-index: 1;
+    opacity: 1;
+    background-color: rgba(29,29,29,.5);
+    -ms-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    color:#fff;
+    font-size:2em;
+    padding:2%;
+    font-weight:400;
+    text-align:center;
+    vertical-align: middle;
+}
+
+@media (min-width: 992px) {
+    .project figure .actions {
+    top: 60%;
+    left:0;
+    right:0;
+    font-size:1.5em;
+    padding:2%;
+}
+.project figure:hover .actions {
+    top: 0%;
+    font-size:2em;
+    padding-top:20%;
+}
+}
+
+@media (min-width: 1200px) {
+    .project figure .actions {
+    top: 65%;
+    left:0;
+    right:0;
+    font-size:1.1em;
+    padding:2%;
+    font-weight:400;
+}
+.project figure:hover .actions {
+    top: 0%;
+    font-size:1.5em;
+    padding-top:25%;
+}
+}

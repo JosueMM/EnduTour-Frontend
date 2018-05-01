@@ -20,4 +20,14 @@ export class MenuComponent implements OnInit {
 
   }
 
+logout(){
+  sessionStorage.setItem("email","");
+  sessionStorage.setItem("id","");
+  sessionStorage.setItem("username","");
+  window.location.href = "http://localhost:4200/inicio"
+
+}
+
+
+
 }

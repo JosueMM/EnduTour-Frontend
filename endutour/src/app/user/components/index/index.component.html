@@ -13,7 +13,7 @@
             <th scope="col">Inicio</th>
             <th scope="col">Final</th>
             <th scope="col">Fecha</th>
-            <th scope="col"><button type="button" class="btn btn-primary">Premios</button></th>
+            <th scope="col"><button type="button"  (click)="premios();" class="btn btn-primary">Premios</button></th>
 
           </tr>
         </thead>
@@ -24,7 +24,7 @@
             <td>{{ruta["end"]}}</td>
             <td>{{ruta["date"]}}</td>
             <td>
-              <button *ngIf= "ruta['status']" type="button" class="btn btn-success" (click)="editRut(ruta['id'])">Ruta Terminada</button>
+              <button *ngIf= "ruta['status']" type="button" class="btn btn-success" (click)="editRut(ruta['id']);">Ruta Terminada</button>
             </td>
           </tr>
         </tbody>

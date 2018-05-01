@@ -1,20 +1,18 @@
 import { User } from "./user";
 
-export class Static
-{
+export class Static {
 
 
 
-    static Configuration = class
-    {
-        static user:User;
-       
+    static Configuration = class {
+        static user: User;
 
-       
-        
+
+
+
     };
 
-    public setStatic(user_params:User) {
+    public setStatic(user_params: User) {
         Static.Configuration.user = user_params;
     }
     public getStatic() {

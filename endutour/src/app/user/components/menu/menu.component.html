@@ -12,8 +12,9 @@
       <li class="nav-item " *ngFor="let menu_option of menu_options">
         <a class="nav-link"  routerLink="{{menu_option.link}}">{{menu_option.name}}</a>
       </li>
+      
       <div class="nav-item ">
-        <a class="nav-link" >{{user_log}}</a>
+        <button type="button" class="btn btn-outline-dark" (click) = "logout()">Logout</button>
       </div>
 
     </ul>

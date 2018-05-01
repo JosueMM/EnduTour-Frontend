@@ -16,6 +16,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { IndexComponent } from './user/components/index/index.component';
 import { SearchComponent } from './shared/components/search/search.component';
 import { AddUserComponent } from './user/components/add-user/add-user.component';
+import {PremiosComponent} from './shared/components/premios/premios.component'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
@@ -28,6 +29,8 @@ import { RutUserService } from './shared/services/rut-user.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {FlashMessageModule} from 'angular-flash-message';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { importType } from '@angular/compiler/src/output/output_ast';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,9 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     LoginComponent,
     IndexComponent,
     SearchComponent,
-    AddUserComponent
+    AddUserComponent,
+    PremiosComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

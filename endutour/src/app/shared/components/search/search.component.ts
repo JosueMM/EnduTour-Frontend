@@ -109,6 +109,12 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
+    var email = sessionStorage.getItem("email")
+
+    if(email === undefined || email === ""){
+window.location.href = "http://localhost:4200/NotFound";
+    }
+
     if (this.buscar === undefined || this.buscar === "") {
       this.buscar = "";
       this.getRuts();
@@ -153,7 +159,7 @@ export class SearchComponent implements OnInit {
           alert("Ruta Creada!");
           this.operation.is_new = false;
           this.current_rut = new Rut();
-          this.ngOnInit();
+      
         });
 
       return;

@@ -7,6 +7,8 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { IndexComponent } from './user/components/index/index.component';
 import { SearchComponent } from './shared/components/search/search.component';
 import { AddUserComponent } from './user/components/add-user/add-user.component';
+import { PremiosComponent } from './shared/components/premios/premios.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'principal', component: IndexComponent },
   { path: 'buscar', component: SearchComponent },
-  { path: 'usuario', component: AddUserComponent }
+  { path: 'usuario', component: AddUserComponent },
+  { path: 'premios', component: PremiosComponent },
+  { path: 'NotFound', component: NotFoundComponent }
 ]
 
 @NgModule({

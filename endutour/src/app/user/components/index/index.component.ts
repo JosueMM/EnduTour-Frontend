@@ -7,6 +7,7 @@ import { RutUserService } from '../../../shared/services/rut-user.service';
 import { UserService } from '../../services/user.service';
 import { Rut_user } from '../../../rut_user';
 import { Rut } from '../../../rut';
+import { Session } from 'protractor';
 
 
 @Component({
@@ -33,6 +34,14 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    var email = sessionStorage.getItem("email")
+
+    if(email === undefined || email === ""){
+window.location.href = "http://localhost:4200/NotFound";
+    }
+
+
     this.log = sessionStorage.getItem("username");
     this.email = sessionStorage.getItem("email");
     this.points = sessionStorage.getItem("puntos");
@@ -55,6 +64,7 @@ export class IndexComponent implements OnInit {
       }
     }
     this.viewIndex();
+    
   }
 
   viewIndex(){
@@ -64,7 +74,7 @@ export class IndexComponent implements OnInit {
          sessionStorage.setItem("puntos",this.users[i].point.toString());
       }
     }
-    this.ngOnInit();
+  
   }
 
   editRut(id: number) {
@@ -72,14 +82,19 @@ export class IndexComponent implements OnInit {
     for (let i = 0; i < this.ruts.length; i++) {
       if (this.ruts[i].id === id) {
         this.current_rut = this.ruts[i];
-        this.current_rut.status = false;
         this.puntos();
+        this.current_rut.status = false;
         this.updateRut();
       }
     }
     this.ngOnInit();
+   
   }
 
+
+  premios(){
+    window.location.href = "http://localhost:4200/premios";
+  }
 
 
 
@@ -102,7 +117,7 @@ export class IndexComponent implements OnInit {
   updateRut() {
     this.searchService.updateRut(this.current_rut)
       .subscribe(res => {
-        this.ngOnInit();
+      
       });
   }
 
@@ -124,7 +139,7 @@ export class IndexComponent implements OnInit {
   updateUser() {
     this.userService.updateUser(this.user)
       .subscribe(res => {
-        this.ngOnInit();
+        
       });
   }
 
